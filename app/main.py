@@ -9,7 +9,7 @@ os.environ['REQUESTS_CA_BUNDLE'] = '_internal\\certifi\\cacert.pem'
 
 if __name__ == '__main__':
     app = QApplication()
-    app.setWindowIcon(QIcon('resources\\images\\logo-fapeg.ico'))
+    app.setWindowIcon(QIcon('resources\\images\\icon.ico'))
     window = MainWindow()
     window.show()
 

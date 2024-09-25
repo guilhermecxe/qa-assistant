@@ -4,6 +4,8 @@ from PyInstaller.utils.hooks import collect_data_files
 
 datas = collect_data_files('chromadb', include_py_files=True, includes=['**/*.py', '**/*.sql'])
 
+block_cipher = None
+
 a = Analysis(
     ['app\\main.py'],
     pathex=[],
@@ -17,19 +19,25 @@ a = Analysis(
         'chromadb.migrations',
         'chromadb.migrations.embeddings_queue',
         'hnswlib',
+        'langchain.chains.history_aware_retriever',
+        'langchain.chains.retrieval',
+        'tiktoken_ext',
+        'tiktoken_ext.openai_public',
     ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    noarchive=False,
-    optimize=0,
-)
-pyz = PYZ(a.pure)
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False)
+
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
     pyz,
-    a.scripts,
+    a.scripts, 
     [],
     exclude_binaries=True,
     name='main',
@@ -39,18 +47,16 @@ exe = EXE(
     upx=True,
     console=False,
     disable_windowed_traceback=False,
-    argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
-    entitlements_file=None,
-    icon='app\\resources\\images\\logo-fapeg.ico',
-)
+    entitlements_file=None)
+
 coll = COLLECT(
     exe,
     a.binaries,
-    a.datas,
+    a.zipfiles,
+    a.datas, 
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='main',
-)
+    name='main')

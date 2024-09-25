@@ -37,7 +37,7 @@ class MainWindow(QMainWindow):
         # Window settings
         geometry = self.screen().availableGeometry()
         self.setMinimumSize(geometry.width() * 0.7, geometry.height() * 0.7)
-        self.setWindowTitle('Assistente FAPEG')
+        self.setWindowTitle('Assistente')
         self.setFont(QFont('Segoe UI', 10))
 
         # Layouts
