@@ -15,7 +15,7 @@ Uso:
 ![Alt text](./screenshots/Screenshot%202.png)
 
 Acesso ao contexto utilizado para responder:
-![Alt text](./screenshots/Screenshot%202.png)
+![Alt text](./screenshots/Screenshot%203.png)
 
 ## Funcionalidades
 
